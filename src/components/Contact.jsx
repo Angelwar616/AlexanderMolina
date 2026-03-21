@@ -1,37 +1,47 @@
 import React from 'react';
+import { useTheme } from '../ThemeProvider.jsx';
+import { t } from '../translations.js';
 
 export default function Contact() {
+  const { isDark, language } = useTheme();
+
   const contacts = [
-    { icon: '✉️', label: 'Email', href: 'mailto:bel.m616@gmail.com' },
-    { icon: '💼', label: 'LinkedIn', href: 'https://www.linkedin.com/in/alexander-aaron-molina-serrano-b70a07207/' },
-    { icon: '🐙', label: 'GitHub', href: 'https://github.com' },
-    { icon: '📄', label: 'Descargar CV', href: 'https://github.com/Angelwar616' }
+    { icon: '✉️', key: 'contact.email', href: 'mailto:bel.m616@gmail.com' },
+    { icon: '💼', key: 'contact.linkedin', href: 'https://www.linkedin.com/in/alexander-aaron-molina-serrano-b70a07207/' },
+    { icon: '🐙', key: 'contact.github', href: 'https://github.com' },
+    { icon: '📄', key: 'contact.cv', href: 'https://github.com/Angelwar616' }
   ];
 
   return (
-    <section id="contacto" className="px-16 py-20 relative z-10">
-      <p className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
-        ¿Trabajamos juntos?
+    <section id="contacto" className={`px-16 py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+      <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-cyan-600'}`}>
+        {t('contact.subtitulo', language)}
       </p>
-      <h2 className="text-4xl font-black mb-6">
-        Hablemos
+      <h2 className={`text-4xl font-black mb-6 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+        {t('contact.titulo', language)}
       </h2>
-      <p className="text-lg text-slate-400 max-w-2xl mb-12 leading-relaxed">
-        Estoy abierto a oportunidades freelance, colaboraciones y proyectos desafiantes. ¡No dudes en contactarme!
+      <p className={`text-lg max-w-2xl mb-12 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+        {t('contact.desc', language)}
       </p>
 
       <div className="flex flex-wrap gap-4">
         {contacts.map((contact) => (
           <a
-            key={contact.label}
+            key={contact.key}
             href={contact.href}
-            className="group flex items-center gap-3 px-6 py-3 bg-slate-900/40 border border-slate-700/50 rounded-full hover:border-cyan-500/50 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10"
+            className={`group flex items-center gap-3 px-6 py-3 rounded-full transition-all duration-300 ${
+              isDark
+                ? 'bg-slate-900/40 border border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:shadow-cyan-500/10'
+                : 'bg-slate-100/40 border border-slate-300/50 hover:border-cyan-600/50 hover:bg-slate-200/50 hover:shadow-cyan-600/10'
+            } hover:shadow-lg`}
           >
             <span className="text-xl group-hover:scale-110 transition-transform duration-300">
               {contact.icon}
             </span>
-            <span className="text-sm font-medium text-slate-300 group-hover:text-cyan-400 transition-colors">
-              {contact.label}
+            <span className={`text-sm font-medium transition-colors group-hover:text-cyan-400 ${
+              isDark ? 'text-slate-300' : 'text-slate-700'
+            }`}>
+              {t(contact.key, language)}
             </span>
           </a>
         ))}
