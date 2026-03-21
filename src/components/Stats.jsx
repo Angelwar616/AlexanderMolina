@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../ThemeProvider.jsx';
-
+import {t} from '../translations.js'
 
 export default function Stats() {
   const { isDark, language } = useTheme();
