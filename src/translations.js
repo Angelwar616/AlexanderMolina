@@ -1,5 +1,6 @@
 export const translations = {
   es: {
+    
     stats: {
       experiencia: 'Años de experiencia',
       proyectos: 'Proyectos completados',
@@ -12,13 +13,20 @@ export const translations = {
       proyectos: 'Proyectos',
       contacto: 'Contacto'
     },
-    hero: {
+      hero: {
       disponible: 'Disponible para nuevas oportunidades',
       saludo: 'Hola, soy',
       nombre: 'Alexander Molina',
       desc: 'Ingeniero en Sistemas apasionado por construir soluciones digitales robustas, escalables y eficientes. Especializado en desarrollo full-stack, arquitectura cloud y experiencias de usuario impecables.',
       verProyectos: 'Ver proyectos →',
-      contactame: 'Contáctame'
+      contactame: 'Contáctame',
+      miPerfil: '// Mi perfil',
+      nombre_label: '"nombre"',
+      rol_label: '"rol"',
+      experiencia_label: '"experiencia"',
+      stack_label: '"stack"',
+      disponible_label: '"disponible"',
+      contratame: 'contratame'
     },
     skills: {
       titulo: 'Mi Stack Técnico',
@@ -76,7 +84,14 @@ export const translations = {
       nombre: 'Alexander Molina',
       desc: 'Systems Engineer passionate about building robust, scalable and efficient digital solutions. Specialized in full-stack development, cloud architecture and impeccable user experiences.',
       verProyectos: 'View projects →',
-      contactame: 'Contact me'
+      contactame: 'Contact me',
+      miPerfil: '// My profile',
+      nombre_label: '"name"',
+      rol_label: '"role"',
+      experiencia_label: '"experience"',
+      stack_label: '"stack"',
+      disponible_label: '"available"',
+      contratame: 'hire me'
     },
     skills: {
       titulo: 'My Technical Stack',

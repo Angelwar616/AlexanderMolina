@@ -79,24 +79,24 @@ export default function Hero() {
           </div>
 
           <div className={`p-6 font-mono text-sm space-y-2 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            <div className={isDark ? 'text-slate-500' : 'text-slate-600'}>// Mi perfil</div>
+            <div className={isDark ? 'text-slate-500' : 'text-slate-600'}>{t('hero.miPerfil', language)}</div>
             <div>
-              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>"nombre"</span>
+              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>{t('hero.nombre_label', language)}</span>
               <span>: </span>
               <span className={isDark ? 'text-green-400' : 'text-green-700'}>"Alexander Aaron Molina Serrano"</span>,
             </div>
             <div>
-              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>"rol"</span>
+              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>{t('hero.rol_label', language)}</span>
               <span>: </span>
               <span className={isDark ? 'text-green-400' : 'text-green-700'}>"Ing. de Sistemas"</span>,
             </div>
             <div>
-              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>"experiencia"</span>
+              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>{t('hero.experiencia_label', language)}</span>
               <span>: </span>
               <span className={isDark ? 'text-yellow-400' : 'text-yellow-600'}>3</span>,
             </div>
             <div>
-              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>"stack"</span>: [
+              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>{t('hero.stack_label', language)}</span>: [
             </div>
             <div className="pl-6">
               <span className={isDark ? 'text-green-400' : 'text-green-700'}>"React"</span>,
@@ -108,13 +108,13 @@ export default function Hero() {
             </div>
             <div>],</div>
             <div>
-              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>"disponible"</span>
+              <span className={isDark ? 'text-cyan-300' : 'text-cyan-700'}>{t('hero.disponible_label', language)}</span>
               <span>: </span>
               <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>true</span>
             </div>
             <div className="mt-4">
               <span className={isDark ? 'text-blue-500' : 'text-blue-700'}>$</span>
-              <span className={isDark ? 'text-white' : 'text-slate-900'}> contratame</span>
+              <span className={isDark ? 'text-white' : 'text-slate-900'}> {t('hero.contratame', language)}</span>
               <span className={`inline-block w-2 h-5 ml-1 animate-pulse ${isDark ? 'bg-cyan-400' : 'bg-cyan-500'}`}></span>
             </div>
           </div>
