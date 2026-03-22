@@ -39,8 +39,8 @@ export default function Skills() {
   ];
 
   return (
-    <section id="skills" className={`px-16 py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
-      <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-cyan-600'}`}>
+    <section id="skills" className={`px-16 py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+      <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-blue-700'}`}>
         {t('skills.subtitulo', language)}
       </p>
       <h2 className={`text-4xl font-black mb-3 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
@@ -55,7 +55,7 @@ export default function Skills() {
             className={`rounded-xl p-8 transition-all duration-300 group cursor-pointer ${
               isDark
                 ? 'bg-slate-900/40 border border-slate-700/50 hover:border-cyan-500/50 hover:bg-slate-800/50 hover:shadow-cyan-500/5'
-                : 'bg-slate-100/40 border border-slate-300/50 hover:border-cyan-600/50 hover:bg-slate-200/50 hover:shadow-cyan-600/5'
+                : 'bg-blue-200/70 border border-blue-400/70 hover:border-blue-500 hover:bg-blue-200 hover:shadow-blue-400/20'
             } hover:shadow-lg`}
             style={{
               animation: `slideIn 0.6s ease ${idx * 0.08}s forwards`,
@@ -68,7 +68,7 @@ export default function Skills() {
             <h3 className={`font-bold mb-2 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
               {skill.name}
             </h3>
-            <p className={`text-xs font-mono tracking-wide ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+            <p className={`text-xs font-mono tracking-wide ${isDark ? 'text-slate-500' : 'text-blue-700'}`}>
               {skill.desc}
             </p>
           </div>
