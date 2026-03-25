@@ -9,6 +9,7 @@ import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import Headers from './components/headers.jsx';
 import RestPage from './pages/RestPage.jsx';
+import ContactForm from './components/ContactForm.jsx';
 
 function AppContent() {
   const [scrollY, setScrollY] = useState(0);
@@ -25,7 +26,7 @@ function AppContent() {
   }, []);
 
   return (
-    <div className={`${isDark ? 'bg-slate-950 text-slate-100' : 'bg-gradient-to-b from-white to-blue-50 text-slate-900'} overflow-x-hidden transition-colors duration-500`}>
+    <div className={`${isDark ? 'bg-slate-950 text-slate-100' : 'bg-linear-to-b from-white to-blue-50 text-slate-900'} overflow-x-hidden transition-colors duration-500`}>
       <div 
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -52,6 +53,7 @@ function AppContent() {
             </>
           } />
           <Route path="/project/:projectId" element={<RestPage />} />
+          <Route path="/contact" element={<ContactForm />} />
         </Routes>
         
         <Footer />
