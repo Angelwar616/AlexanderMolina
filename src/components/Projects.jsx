@@ -64,25 +64,21 @@ export default function Projects() {
     }
   ];
 
-  // Función para manejar la navegación a detalle del proyecto
   const handleViewProject = (projectId) => {
-    // Aquí puedes agregar lógica adicional si lo necesitas
-    // Por ejemplo: analytics, validaciones, etc.
-    console.log(`Navegando a proyecto: ${projectId}`);
     navigate(`/project/${projectId}`);
   };
 
   return (
-    <section id="proyectos" className={`px-16 py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+    <section id="proyectos" className={`px-4 md:px-16 py-12 md:py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
       <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-blue-700'}`}>
         {t('projects.subtitulo', language)}
       </p>
-      <h2 className={`text-4xl font-black mb-3 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+      <h2 className={`text-3xl md:text-4xl font-black mb-3 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
         {t('projects.titulo', language)}
       </h2>
-      <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mb-16"></div>
+      <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mb-12"></div>
 
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {projects.map((project, idx) => (
           <div
             key={idx}
@@ -96,11 +92,11 @@ export default function Projects() {
               opacity: 0
             }}
           >
-            <div className={`bg-gradient-to-br ${project.color} h-24 flex items-center justify-center text-5xl group-hover:scale-110 transition-transform duration-300`}>
+            <div className={`bg-gradient-to-br ${project.color} h-24 flex items-center justify-center text-4xl md:text-5xl group-hover:scale-110 transition-transform duration-300`}>
               {project.emoji}
             </div>
 
-            <div className={`p-6 space-y-4 ${isDark ? 'bg-slate-950/50' : 'bg-blue-100/80'}`}>
+            <div className={`p-4 md:p-6 space-y-3 md:space-y-4 ${isDark ? 'bg-slate-950/50' : 'bg-blue-100/80'}`}>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -116,11 +112,11 @@ export default function Projects() {
                 ))}
               </div>
 
-              <h3 className={`text-lg font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+              <h3 className={`text-base md:text-lg font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
                 {t(project.titleKey, language)}
               </h3>
 
-              <p className={`text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
+              <p className={`text-xs md:text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
                 {t(project.descKey, language)}
               </p>
 

@@ -6,8 +6,8 @@ export default function Hero() {
   const { isDark, language } = useTheme();
 
   return (
-    <section className={`min-h-screen grid grid-cols-2 items-center px-16 pt-24 gap-16 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
-      <div className="pt-20 space-y-8">
+    <section className={`min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center px-4 md:px-16 pt-24 gap-8 lg:gap-16 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+      <div className="pt-10 lg:pt-20 space-y-6 lg:space-y-8">
         <div 
           className={`inline-flex items-center gap-2 rounded-full px-4 py-2 animate-fadeUp ${
             isDark
@@ -23,7 +23,7 @@ export default function Hero() {
         </div>
 
         <h1 
-          className={`text-5xl font-black leading-tight animate-fadeUp ${isDark ? 'text-slate-100' : 'text-slate-900'}`}
+          className={`text-3xl md:text-5xl font-black leading-tight animate-fadeUp ${isDark ? 'text-slate-100' : 'text-slate-900'}`}
           style={{ animationDelay: '0.1s', animationFillMode: 'both' }}
         >
           {t('hero.saludo', language)}<br />
@@ -33,25 +33,25 @@ export default function Hero() {
         </h1>
 
         <p 
-          className={`text-lg max-w-lg leading-relaxed font-light animate-fadeUp ${isDark ? 'text-slate-400' : 'text-slate-700'}`}
+          className={`text-base md:text-lg max-w-lg leading-relaxed font-light animate-fadeUp ${isDark ? 'text-slate-400' : 'text-slate-700'}`}
           style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
         >
           {t('hero.desc', language)}
         </p>
 
         <div 
-          className="flex gap-4 flex-wrap animate-fadeUp"
+          className="flex gap-3 flex-wrap animate-fadeUp"
           style={{ animationDelay: '0.3s', animationFillMode: 'both' }}
         >
           <a
             href="#proyectos"
-            className="group relative px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg text-sm overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/50"
+            className="group relative px-6 md:px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg text-sm overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/50"
           >
             <span className="relative z-10">{t('hero.verProyectos', language)}</span>
           </a>
           <a
             href="#contacto"
-            className={`px-8 py-3 font-semibold rounded-lg text-sm transition-all ${
+            className={`px-6 md:px-8 py-3 font-semibold rounded-lg text-sm transition-all ${
               isDark
                 ? 'border border-cyan-500/40 text-cyan-500 hover:bg-cyan-500/10 hover:border-cyan-500'
                 : 'border border-blue-400 text-blue-700 hover:bg-blue-100 hover:border-blue-500'
@@ -78,7 +78,7 @@ export default function Hero() {
             <span className={`text-xs font-mono ml-2 ${isDark ? 'text-slate-500' : 'text-blue-700'}`}>dev@portfolio ~ profile.json</span>
           </div>
 
-          <div className={`p-6 font-mono text-sm space-y-2 ${isDark ? 'text-slate-300' : 'text-blue-900'}`}>
+          <div className={`p-4 md:p-6 font-mono text-xs md:text-sm space-y-2 ${isDark ? 'text-slate-300' : 'text-blue-900'}`}>
             <div className={isDark ? 'text-slate-500' : 'text-blue-700'}>{t('hero.miPerfil', language)}</div>
             <div>
               <span className={isDark ? 'text-cyan-300' : 'text-blue-700'}>{t('hero.nombre_label', language)}</span>
@@ -98,11 +98,11 @@ export default function Hero() {
             <div>
               <span className={isDark ? 'text-cyan-300' : 'text-blue-700'}>{t('hero.stack_label', language)}</span>: [
             </div>
-            <div className="pl-6">
+            <div className="pl-4">
               <span className={isDark ? 'text-green-400' : 'text-green-700'}>"React"</span>,
               <span className={isDark ? 'text-green-400' : 'text-green-700'}> "Node.js"</span>,
             </div>
-            <div className="pl-6">
+            <div className="pl-4">
               <span className={isDark ? 'text-green-400' : 'text-green-700'}>"Python"</span>,
               <span className={isDark ? 'text-green-400' : 'text-green-700'}> "C#"</span>
             </div>
