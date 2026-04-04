@@ -2,15 +2,16 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../ThemeProvider.jsx';
 import { t } from '../translations.js';
+import { FaCar, FaUtensils, FaRecycle, FaBox, FaLock, FaBolt } from 'react-icons/fa';
 
 export default function Projects() {
   const { isDark, language } = useTheme();
-  const navigate = useNavigate();
+  // const navigate = useNavigate(); // COMENTADO - No se usa por ahora
 
   const projects = [
     {
       id: 'monitoreo-vehicular',
-      emoji: '🚗',
+      icon: FaCar,
       titleKey: 'projects.monitoreoVehicular',
       descKey: 'projects.descMonitoreo',
       tags: ['Python', 'Firebase', 'Flutter'],
@@ -19,7 +20,7 @@ export default function Projects() {
     },
     {
       id: 'sistema-venta-restaurante',
-      emoji: '🍽️',
+      icon: FaUtensils,
       titleKey: 'projects.sistemaPOS',
       descKey: 'projects.descSistemaPOS',
       tags: ['Laravel', 'MySQL', 'Node.js'],
@@ -28,7 +29,7 @@ export default function Projects() {
     },
     {
       id: 'resplast',
-      emoji: '♻️',
+      icon: FaRecycle,
       titleKey: 'projects.resPlast',
       descKey: 'projects.descResPlast',
       tags: ['React', 'Node.js', 'IoT', 'Firebase'],
@@ -37,7 +38,7 @@ export default function Projects() {
     },
     {
       id: 'sistema-inventarios',
-      emoji: '📦',
+      icon: FaBox,
       titleKey: 'projects.inventario',
       descKey: 'projects.descInventario',
       tags: ['C#', '.NET', 'SQL Server'],
@@ -46,7 +47,7 @@ export default function Projects() {
     },
     {
       id: 'ciberseguridad',
-      emoji: '🔒',
+      icon: FaLock,
       titleKey: 'projects.seguridad',
       descKey: 'projects.descSeguridad',
       tags: ['Wireshark', 'Seguridad', 'Redes'],
@@ -55,7 +56,7 @@ export default function Projects() {
     },
     {
       id: 'arquitectura-frontend',
-      emoji: '⚡',
+      icon: FaBolt,
       titleKey: 'projects.arquitectura',
       descKey: 'projects.descArquitectura',
       tags: ['React', 'Atomic Design', 'Performance'],
@@ -64,78 +65,90 @@ export default function Projects() {
     }
   ];
 
-  const handleViewProject = (projectId) => {
-    navigate(`/project/${projectId}`);
-  };
+  // COMENTADO - Función para navegar a detalle del proyecto
+  // const handleViewProject = (projectId) => {
+  //   navigate(`/project/${projectId}`);
+  // };
 
   return (
-    <section id="proyectos" className={`px-4 md:px-16 py-12 md:py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+    <section id="proyectos" className={`px-4 md:px-16 py-12 md:py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-linear-to-b from-white to-blue-50'}`}>
       <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-blue-700'}`}>
         {t('projects.subtitulo', language)}
       </p>
       <h2 className={`text-3xl md:text-4xl font-black mb-3 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
         {t('projects.titulo', language)}
       </h2>
-      <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mb-12"></div>
+      <div className="w-12 h-1 bg-linear-to-r from-blue-500 to-cyan-500 mb-12"></div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {projects.map((project, idx) => (
-          <div
-            key={idx}
-            className={`bg-gradient-to-br ${project.color} rounded-xl overflow-hidden transition-all duration-300 group ${
-              isDark
-                ? 'border border-slate-700/50 hover:border-cyan-500/50 hover:shadow-cyan-500/10'
-                : 'border border-blue-300/50 hover:border-blue-400 hover:shadow-blue-400/15'
-            } hover:shadow-lg`}
-            style={{
-              animation: `slideIn 0.6s ease ${idx * 0.08}s forwards`,
-              opacity: 0
-            }}
-          >
-            <div className={`bg-gradient-to-br ${project.color} h-24 flex items-center justify-center text-4xl md:text-5xl group-hover:scale-110 transition-transform duration-300`}>
-              {project.emoji}
-            </div>
-
-            <div className={`p-4 md:p-6 space-y-3 md:space-y-4 ${isDark ? 'bg-slate-950/50' : 'bg-blue-100/80'}`}>
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`px-2 py-1 rounded text-xs font-mono transition-colors ${
-                      isDark
-                        ? 'bg-slate-800/50 border border-slate-700 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30'
-                        : 'bg-blue-300/70 border border-blue-500/50 text-blue-900 hover:text-blue-950 hover:border-blue-600'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
+        {projects.map((project, idx) => {
+          const IconComponent = project.icon;
+          return (
+            <div
+              key={idx}
+              className={`bg-linear-to-br ${project.color} rounded-xl overflow-hidden transition-all duration-300 group ${
+                isDark
+                  ? 'border border-slate-700/50 hover:border-cyan-500/50 hover:shadow-cyan-500/10'
+                  : 'border border-blue-300/50 hover:border-blue-400 hover:shadow-blue-400/15'
+              } hover:shadow-lg`}
+              style={{
+                animation: `slideIn 0.6s ease ${idx * 0.08}s forwards`,
+                opacity: 0
+              }}
+            >
+              {/* Thumbnail con icono */}
+              <div className={`bg-linear-to-br ${project.color} h-24 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                <IconComponent className="text-5xl md:text-6xl text-slate-100" />
               </div>
 
-              <h3 className={`text-base md:text-lg font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
-                {t(project.titleKey, language)}
-              </h3>
+              {/* Contenido de la tarjeta */}
+              <div className={`p-4 md:p-6 space-y-3 md:space-y-4 ${isDark ? 'bg-slate-950/50' : 'bg-blue-100/80'}`}>
+                
+                {/* Tags/Tecnologías */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`px-2 py-1 rounded text-xs font-mono transition-colors ${
+                        isDark
+                          ? 'bg-slate-800/50 border border-slate-700 text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30'
+                          : 'bg-blue-300/70 border border-blue-500/50 text-blue-900 hover:text-blue-950 hover:border-blue-600'
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-              <p className={`text-xs md:text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
-                {t(project.descKey, language)}
-              </p>
+                {/* Título del proyecto */}
+                <h3 className={`text-base md:text-lg font-bold ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+                  {t(project.titleKey, language)}
+                </h3>
 
-              <p className={`text-xs font-mono ${isDark ? 'text-slate-500' : 'text-blue-700'}`}>
-                {project.period}
-              </p>
+                {/* Descripción */}
+                <p className={`text-xs md:text-sm leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-700'}`}>
+                  {t(project.descKey, language)}
+                </p>
 
-              <button
-                onClick={() => handleViewProject(project.id)}
-                className={`inline-flex items-center font-semibold text-sm transition-colors group/link cursor-pointer ${
-                  isDark ? 'text-cyan-400 hover:text-cyan-300' : 'text-blue-700 hover:text-blue-900'
-                }`}
-              >
-                {t('projects.verProyecto', language)}
-                <span className="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
-              </button>
+                {/* Período */}
+                <p className={`text-xs font-mono ${isDark ? 'text-slate-500' : 'text-blue-700'}`}>
+                  {project.period}
+                </p>
+
+                {/* COMENTADO - Botón para ver detalle del proyecto */}
+                {/* <button
+                  onClick={() => handleViewProject(project.id)}
+                  className={`inline-flex items-center font-semibold text-sm transition-colors group/link cursor-pointer ${
+                    isDark ? 'text-cyan-400 hover:text-cyan-300' : 'text-blue-700 hover:text-blue-900'
+                  }`}
+                >
+                  {t('projects.verProyecto', language)}
+                  <span className="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
+                </button> */}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <style>{`

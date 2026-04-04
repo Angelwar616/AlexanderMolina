@@ -1,3 +1,15 @@
+// projectsDetailData.jsx o donde tengas tus datos
+import DashboardPrincipal from '../assets/Projects/resplast/Dashboard_principal.png';
+import InicioSesion from '../assets/Projects/resplast/Inicio_sesion.png';
+import PantallaControl from '../assets/Projects/resplast/Pantalla control.png';
+import PersonaVista from '../assets/Projects/resplast/Persona_vista.png';
+import PruebaSensores from '../assets/Projects/resplast/Prueba_sensores.png';
+import PruebaVentiladores from '../assets/Projects/resplast/Prueba_ventiladores.png';
+
+// Si tienes imágenes de otros proyectos, impórtalas también
+// import imagen1 from '../assets/projects/monitoreo/imagen1.jpg';
+// import imagen2 from '../assets/projects/restaurante/imagen1.jpg';
+
 export const projectsDetailData = {
   'monitoreo-vehicular': {
     id: 'monitoreo-vehicular',
@@ -6,11 +18,10 @@ export const projectsDetailData = {
     emoji: '🚗',
     technologies: ['Python', 'Firebase', 'Flutter', 'Arduino', 'OBD-II'],
     period: 'feb 2025 - jul 2025',
-    type: 'personal', // 'personal' | 'empresarial'
+    type: 'personal',
     images: [
-      '/projects/monitoreo/screenshot-1.jpg',
-      '/projects/monitoreo/screenshot-2.jpg',
-      '/projects/monitoreo/screenshot-3.jpg',
+      // '/projects/monitoreo/screenshot-1.jpg', // Ruta antigua
+      // Agrega aquí las imágenes reales cuando las tengas
     ],
     fullDescription: 'Plataforma completa de telemetría en tiempo real para monitoreo de vehículos. Motor de adquisición de datos en Python que se conecta al protocolo OBD-II, con sincronización Cloud mediante Firebase, reduciendo latencia de visualización y garantizando estabilidad en entornos de alta movilidad.',
     challenges: [
@@ -39,8 +50,8 @@ export const projectsDetailData = {
       'API REST documentada'
     ],
     relatedProjects: ['sistema-venta-restaurante', 'resplast'],
-    youtubeLink: null, // O URL de video si existe
-    githubLink: 'https://github.com/Angelwar616' // Si es público
+    youtubeLink: null,
+    githubLink: 'https://github.com/Angelwar616'
   },
 
   'sistema-venta-restaurante': {
@@ -50,10 +61,9 @@ export const projectsDetailData = {
     emoji: '🍽️',
     technologies: ['Laravel', 'MySQL', 'Node.js', 'Vue.js', 'Docker'],
     period: 'jul 2025 - sep 2025',
-    type: 'empresarial', // Datos limitados por privacidad
+    type: 'empresarial',
     images: [
-      '/projects/restaurante/screenshot-1.jpg',
-      '/projects/restaurante/screenshot-2.jpg',
+      // Agrega aquí las imágenes cuando las tengas
     ],
     fullDescription: 'Sistema integral de facturación y gestión de inventario para restaurantes. Implementé validaciones automáticas de stock en tiempo real, motor de reportes estratégicos y arquitectura robusta con MySQL normalizado.',
     challenges: [
@@ -83,7 +93,7 @@ export const projectsDetailData = {
     ],
     relatedProjects: ['monitoreo-vehicular'],
     youtubeLink: null,
-    githubLink: null // Empresarial - no disponible
+    githubLink: null
   },
 
   'resplast': {
@@ -95,10 +105,12 @@ export const projectsDetailData = {
     period: 'Proyecto académico',
     type: 'personal',
     images: [
-      '/projects/resplast/screenshot-1.jpg',
-      '/projects/resplast/screenshot-2.jpg',
-      '/projects/resplast/screenshot-3.jpg',
-      '/projects/resplast/screenshot-4.jpg',
+      DashboardPrincipal,
+      InicioSesion,
+      PantallaControl,
+      PersonaVista,
+      PruebaSensores,
+      PruebaVentiladores
     ],
     fullDescription: 'Proyecto de grado: Plataforma Fullstack para automatización de pirólisis de plásticos. Automatización completa de control de pirólisis, telemetría con sensores industriales en tiempo real y análisis de rendimiento energético.',
     challenges: [
@@ -127,7 +139,7 @@ export const projectsDetailData = {
       'API para integración externa'
     ],
     relatedProjects: ['monitoreo-vehicular'],
-    youtubeLink: 'https://youtube.com/...', // Enlace a video si existe
+    youtubeLink: 'https://youtube.com/...',
     githubLink: 'https://github.com/Angelwar616'
   },
 
@@ -140,9 +152,7 @@ export const projectsDetailData = {
     period: 'Proyecto académico',
     type: 'personal',
     images: [
-      '/projects/inventario/screenshot-1.jpg',
-      '/projects/inventario/screenshot-2.jpg',
-      '/projects/inventario/screenshot-3.jpg',
+      // Agrega aquí las imágenes cuando las tengas
     ],
     fullDescription: 'Aplicación de escritorio para control de inventarios y ventas. Automatización de actualizaciones de stock en tiempo real, interfaz optimizada para administración ágil y reportes con análisis histórico detallado.',
     challenges: [
@@ -184,7 +194,7 @@ export const projectsDetailData = {
     period: 'feb 2023 - jun 2023',
     type: 'empresarial',
     images: [
-      '/projects/seguridad/screenshot-1.jpg',
+      // Agrega aquí las imágenes cuando las tengas
     ],
     fullDescription: 'Diseño e implementación de infraestructura de seguridad informática. Protocolos de seguridad interna, análisis de tráfico con Wireshark, auditorías de red y configuración de políticas de seguridad.',
     challenges: [
@@ -226,8 +236,7 @@ export const projectsDetailData = {
     period: 'oct 2026 - ene 2026',
     type: 'empresarial',
     images: [
-      '/projects/arquitectura/screenshot-1.jpg',
-      '/projects/arquitectura/screenshot-2.jpg',
+      // Agrega aquí las imágenes cuando las tengas
     ],
     fullDescription: 'Refactorización completa de arquitectura frontend en Smaigo App bajo principios de Atomic Design. Incrementé velocidad de desarrollo en 30%, garantizando escalabilidad con componentes 100% reutilizables.',
     challenges: [

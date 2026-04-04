@@ -6,7 +6,7 @@ export default function Hero() {
   const { isDark, language } = useTheme();
 
   return (
-    <section className={`min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center px-4 md:px-16 pt-24 gap-8 lg:gap-16 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+    <section className={`min-h-screen grid grid-cols-1 lg:grid-cols-2 items-center px-4 md:px-16 pt-24 gap-8 lg:gap-16 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-linear-to-b from-white to-blue-50'}`}>
       <div className="pt-10 lg:pt-20 space-y-6 lg:space-y-8">
         <div 
           className={`inline-flex items-center gap-2 rounded-full px-4 py-2 animate-fadeUp ${
@@ -27,7 +27,7 @@ export default function Hero() {
           style={{ animationDelay: '0.1s', animationFillMode: 'both' }}
         >
           {t('hero.saludo', language)}<br />
-          <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
             {t('hero.nombre', language)}
           </span>
         </h1>
@@ -45,7 +45,7 @@ export default function Hero() {
         >
           <a
             href="#proyectos"
-            className="group relative px-6 md:px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg text-sm overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/50"
+            className="group relative px-6 md:px-8 py-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg text-sm overflow-hidden transition-all hover:shadow-lg hover:shadow-blue-500/50"
           >
             <span className="relative z-10">{t('hero.verProyectos', language)}</span>
           </a>
