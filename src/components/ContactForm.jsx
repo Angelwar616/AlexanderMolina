@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTheme } from '../ThemeProvider.jsx';
 import { t } from '../translations.js';
 import { useNavigate } from 'react-router-dom';
+import { FaTimes, FaGithub } from 'react-icons/fa';
 
 export default function ContactForm() {
   const { isDark, language } = useTheme();
@@ -28,29 +29,64 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simular envío del formulario
-    setTimeout(() => {
-      console.log('Formulario enviado:', formData);
-      setSubmitStatus('success');
-      setFormData({ nombre: '', email: '', telefono: '', comentario: '', asunto: '' });
+    try {
+      const response = await fetch('https://formspree.io/f/mlgopzea', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ nombre: '', email: '', telefono: '', comentario: '', asunto: '' });
+        
+        setTimeout(() => setSubmitStatus(null), 3000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      
-      // Limpiar mensaje después de 3 segundos
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+    }
+  };
+
+  const handleClose = () => {
+    navigate(-1);
   };
 
   return (
-    <section id="contacto-form" className={`px-4 md:px-16 py-12 md:py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-linear-to-b from-white to-blue-50'}`}>
+    <section id="contacto-form" className={`px-4 md:px-16 py-12 md:py-20 relative z-10 ${isDark ? 'bg-slate-950' : 'bg-gradient-to-b from-white to-blue-50'}`}>
+      
       {/* Header */}
-      <div className="mb-12 text-center">
-        <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-blue-700'}`}>
-          Contacto directo
-        </p>
-        <h2 className={`text-3xl md:text-4xl font-black mb-4 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
-          Hablemos de tu <span className={isDark ? 'text-cyan-400' : 'text-blue-600'}>siguiente proyecto</span>
-        </h2>
-        <p className={`text-base md:text-lg max-w-2xl mx-auto ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+      <div className="mb-12">
+        <div className="flex justify-between items-start mb-8">
+          <div className="flex-1">
+            <p className={`font-mono text-xs tracking-widest uppercase mb-4 ${isDark ? 'text-cyan-500' : 'text-blue-700'}`}>
+              Contacto directo
+            </p>
+            <h2 className={`text-3xl md:text-4xl font-black ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+              Hablemos de tu <span className={isDark ? 'text-cyan-400' : 'text-blue-600'}>siguiente proyecto</span>
+            </h2>
+          </div>
+          
+          {/* Botón cerrar */}
+          <button
+            onClick={handleClose}
+            className={`p-3 rounded-full transition-all duration-300 ml-4 ${
+              isDark
+                ? 'bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-cyan-400'
+                : 'bg-blue-200 hover:bg-blue-300 text-slate-700 hover:text-blue-800'
+            }`}
+          >
+            <FaTimes className="text-2xl" />
+          </button>
+        </div>
+        
+        <p className={`text-base md:text-lg max-w-2xl ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
           Puedes contactarme por GitHub o dejar un mensaje aquí y con gusto yo me pondré en contacto contigo.
         </p>
       </div>
@@ -85,14 +121,14 @@ export default function ContactForm() {
               href="https://github.com/Angelwar616"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full mb-6 px-4 py-3 bg-linear-to-r from-gray-800 to-gray-900 text-white font-bold rounded-lg hover:shadow-lg transition-all text-center"
+              className={`flex items-center justify-center gap-2 w-full mb-6 px-4 py-3 font-bold rounded-lg transition-all ${
+                isDark
+                  ? 'bg-gradient-to-r from-gray-800 to-gray-900 text-white hover:shadow-lg hover:shadow-gray-700/50'
+                  : 'bg-gradient-to-r from-gray-700 to-gray-800 text-white hover:shadow-lg hover:shadow-gray-700/50'
+              }`}
             >
-              <span className="inline-flex items-center gap-2">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                github.com/Angelwar616
-              </span>
+              <FaGithub className="text-lg" />
+              github.com/Angelwar616
             </a>
           </div>
 
@@ -160,6 +196,14 @@ export default function ContactForm() {
             <div className={`mb-6 p-4 rounded-lg ${isDark ? 'bg-green-900/30 border border-green-700/50' : 'bg-green-100/50 border border-green-300'}`}>
               <p className={`text-sm font-semibold ${isDark ? 'text-green-400' : 'text-green-700'}`}>
                 ✓ Mensaje enviado correctamente. Me pondré en contacto pronto.
+              </p>
+            </div>
+          )}
+
+          {submitStatus === 'error' && (
+            <div className={`mb-6 p-4 rounded-lg ${isDark ? 'bg-red-900/30 border border-red-700/50' : 'bg-red-100/50 border border-red-300'}`}>
+              <p className={`text-sm font-semibold ${isDark ? 'text-red-400' : 'text-red-700'}`}>
+                ✗ Error al enviar. Intenta de nuevo.
               </p>
             </div>
           )}
@@ -267,7 +311,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-6 px-6 py-3 bg-linear-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
