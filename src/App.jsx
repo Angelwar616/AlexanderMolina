@@ -39,13 +39,12 @@ function AppContent() {
       />   
  
       <div className="relative z-10">
-        {/* ← AGREGADO: Mostrar navbar solo si NO es página de proyecto */}
+
         {!isProjectPage && <Headers scrollY={scrollY} />}
         
         <Routes>
           <Route path="/" element={
-            <>
-              <Hero />
+            <>              
               <Stats />
               <Skills />
               <Projects />
